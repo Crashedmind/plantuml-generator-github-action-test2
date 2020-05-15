@@ -1,5 +1,3 @@
-.github/worksflows/main.yml:
-
 name: Generate PlantUML Diagrams
 on:
   push:
