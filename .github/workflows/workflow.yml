@@ -20,6 +20,7 @@ jobs:
       - name: UML files considered echo output
         run: |
           echo ${{ steps.getfile.outputs.files }}
+
       - name: Generate SVG Diagrams
         uses: cloudbees/plantuml-github-action@master
         with:
@@ -28,6 +29,8 @@ jobs:
         uses: cloudbees/plantuml-github-action@master
         with:
             args: -v -tpng ${{ steps.getfile.outputs.files }}
+      - name: List files
+        run: ls *${{ env.UML_FILES }}; ls -o ${{ env.OUTPUT_DIR }}/*.svg; ls -o ${{ env.OUTPUT_DIR }}/*.png      
       - name: Push Local Changes
         uses:  stefanzweifel/git-auto-commit-action@v4.1.2 
         with: 
